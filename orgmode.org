@@ -2,19 +2,26 @@
 #+AUTHOR: Jan Milde
 
 * The org-basics
-:PROPERTIES:
-:ID:       2728c73d-73ba-4ad6-9668-4f2c9f49df57
-:END:
 ** outliner
 - add another bullet point
+#+BEGIN_SRC
   M-RET
+#+END_SRC
 - to move up down
+#+BEGIN_SRC
   M-up/down
+#+END_SRC
+
 - change level
+#+BEGIN_SRC
   Alt-left/right
+#+END_SRC
 *** refiling
 - move file to another header
+#+BEGIN_SRC
   C-c C-w
+#+END_SRC
+
 ** markup
 *Bold*, /italic/, =verbatim=, +strikethrough+
 
@@ -23,10 +30,7 @@
 - unordered
 - list
 
-
-M-enter for new item
-intendation important, also two newline before different list
-
+for lists intendation important, also two newline before different list
 
 1. kjlk
    - asdas
@@ -42,18 +46,25 @@ intendation important, also two newline before different list
 \end{align*}
 ** metadata
 Put this at the top of the document:
+#+BEGIN_SRC
 #+TITLE: Examplefile
 #+AUTHOR: Jan Milde
+#+END_SRC
+
 lots of options: like removeing table of content (more about that in export)
+#+BEGIN_SRC
 #+OPTIONS: toc:nil
+#+END_SRC
 ** Properties
 :PROPERTIES:
 :END:
 need to go under the header before text
 can be searched with agenda like foor books "pages >200" if you want big one
-
-M-x org-id-get-create  for creating Unique ID (good for linking etc.)
--> unique and links persist when archived, customize: ~/.emacs/.org-id-locations
+- for creating Unique ID (good for linking etc.)
+#+BEGIN_SRC
+M-x org-id-get-create
+#+END_SRC
+-> links persist when archived etc., customize: ~/.emacs/.org-id-locations
 ** Drawers and notes
 *** basic example
 :drawer_example:
@@ -64,32 +75,44 @@ hidden info
 - Note taken on [2020-06-22 Mo 20:36] \\
   quick info
 :END:
-for stashing away stuff
+- for stashing away stuff
 
-/!\ needs customization
+- /!\ needs customization
+  -> change value menu to LOGBOOK
+#+BEGIN_SRC
 M-x customize-variable org-log-into-drawer
--> change value menu to LOGBOOK
+#+END_SRC
 
-C-c C-z for taking quick notes, which are then saved in the LOGBOOK drawer inside that scope
+- for taking quick notes, which are then saved in the LOGBOOK drawer inside that scope
+#+BEGIN_SRC
+C-c C-z
+#+END_SRC
 ** links
-  C-c C-l   add links (to website or files etc.)
+- add links (to website or files etc.)
+#+BEGIN_SRC
+C-c C-l
+#+END_SRC
   [[link] [description]]
   example: [[https:www.albatros-coding.de][albatros website]]
 
-  C-c C-o to follow link
+- to follow link
+#+BEGIN_SRC
+  C-c C-o
+#+END_SRC
+
 
 *** internally
-   [[markup]] for a header, :CUSTOM_ID or so
+[[- markup]] for a header, :CUSTOM_ID or so
 
-   <<<target>>>  radio target
-   -> radio target links every occurence of the targetword in the text to the radiolink target
-   -> good for defenitions in a longer text or so
+- <<<target>>>  radio target
+  -> radio target links every occurence of the targetword in the text to the radiolink target
+  -> good for defenitions in a longer text or so
 *** externally
-   [[protocol: location] ] e.g [[file:/~/Documents/Code]]
-
-   inside another file:
-   M-x org-store-link   to store a link to something inside a file:
-   example: [[file:Algorithms/Self%20Organizing%20Maps/model.py::with%20tf.variable_scope("input"):][todo change something in code]]
+- [[protocol: location] ] e.g [[file:/~/Documents/Code]]
+-inside another file: to store a link to something inside a file:
+#+BEGIN_SRC
+M-x org-store-link
+#+END_SRC
 
 ** tables
 #+CONSTANTS: data_col4=55
@@ -100,19 +123,42 @@ C-c C-z for taking quick notes, which are then saved in the LOGBOOK drawer insid
 |    1 |    2 |  3 |   55 | False  |
 #+TBLFM: $4=$data_col4; :: $5= if($1 >2, string("True"), string("False"));
 - to move rows/columns
+#+BEGIN_SRC
   M- up/down/left/right
+#+END_SRC
+
 - to insert/delete row/column
-  Alt-Shift- up/right|down/left
+#+BEGIN_SRC
+Alt-Shift- up/right|down/left
+#+END_SRC
+
 - for new ---- line
+#+BEGIN_SRC
   C-c -
+#+END_SRC
+
 - for adding up columns or active region in row
+#+BEGIN_SRC
   C-c +
+#+END_SRC
+
 
 ** Source Code
-<s + Tab for shortcut
-C-c ' for editing the code in the block in the mode of the language
+- shortcut to start source block
+#+BEGIN_SRC
+<s + Tab
+#+END_SRC
 
-C-c C-c in block to evaluate code and to print result in the org file
+- for editing the code in the block in the mode of the language
+#+BEGIN_SRC
+C-c '
+#+END_SRC
+
+- to evaluate code and to print result in the org file type inside the source block
+#+BEGIN_SRC
+C-c C-c
+#+END_SRC
+
 #+BEGIN_SRC python
   def hello():
       for x in range(10):
@@ -124,91 +170,183 @@ C-c C-c in block to evaluate code and to print result in the org file
 [[~/Pictures/Albatros logo.jpg]]
 
 - display images inline
+#+BEGIN_SRC
   C-c C-x C-v
+#+END_SRC
+
 
 ** Attachments
-C-c C-a    to open menu
-C-c C-a s  to set a directory where these files will be copied in if copying
-C-c C-a o  to open current tasks attachment
+- to open the attachment menu
+#+BEGIN_SRC
+C-c C-a
+#+END_SRC
+
+-  to set a directory where these files will be copied in if copying
+#+BEGIN_SRC
+C-c C-a s
+#+END_SRC
+
+- to open current tasks attachment
+#+BEGIN_SRC
+C-c C-a o
+#+END_SRC
+
 
 ** Literate programming
-create a setup.org file for all your emacs configs
-in ~/.emacs.d/setup.el insert (org-babel-load-file "~/.emacs.d/setup.org")
+- create a setup.org file for all your emacs configs
+- in ~/.emacs.d/setup.el insert (org-babel-load-file "~/.emacs.d/setup.org")
 
 ** export
 - show all options
+#+BEGIN_SRC
   C-c C-e
+#+END_SRC
+
 - use #+OPTIONS: to set exportoption for subtree, e.g:
-  d:t      show drawer content
-  \n:t     preserve line breaks
-  p:t      export planing information (SCHEDULE/DEADLINE)
-  todo:t   include TODO keywords into export
+  + d:t      show drawer content
+  + \n:t     preserve line breaks
+  + p:t      export planing information (SCHEDULE/DEADLINE)
+  + todo:t   include TODO keywords into export
 
 
 * todo functionality
-Shift+M+ Enter for new TODO item or use shift-right on existing bullet
+- create new TODO item or use shift-right on existing bullet
+#+BEGIN_SRC
+Shift+M+ Enter
+#+END_SRC
+
 ** DONE cycle through states
 CLOSED: [2020-06-18 Do 23:10]
-C-c C-t or shift-right/left
-edit timestamps shift-left/right/up/right
+- under a header type
+#+BEGIN_SRC
+C-c C-t
+#+END_SRC
+
+- on the header
+#+BEGIN_SRC
+shift-right/left
+#+END_SRC
+- edit timestamps by moving the cursor on the days/hours etc.
+#+BEGIN_SRC
+shift-left/right/up/right
+#+END_SRC
+
 ** TODO add deadline or schedule
 SCHEDULED: <2020-06-19 Fr> DEADLINE: <2020-06-22 Mo>
+- add a deadline with
+#+BEGIN_SRC
 C-c C-d
-C-c C-s
+#+END_SRC
 
-search for them:
-C-c /
-- different options: before date etc.
+- add a schedule
+#+BEGIN_SRC
+C-c C-s
+#+END_SRC
+
+
+- search for them with different options: before date etc.
+#+BEGIN_SRC
+C-c //
+#+END_SRC
 ** TODO repeating tasks
 SCHEDULED: <2020-06-19 Fr +1w>
+- (w=week, d=day, m=month, y=year)
+- add to the < time >:
+  - +1w repeat every week
+  - .+1w repeat one week after the task is marked as done
 
-(w=week, d=day, m=month, y=year)
-add to the < time >:
-+1w repeat every week
-.+1w repeat one week after the task is marked as done
 ** TODO [#C] checklists and priorities [1/2][50%]
 Shift-up/down adds a priority
 
-add [] to header and C-c C-c to set it up
-add [ %] to header
-C-c C-c in subtask to tick it off
-- [X] subtask
-- [ ] subtask2
+- add [ /] (without whitespace) to header and C-c C-c to set it up
+- add [ %] to header
+- in subtask to tick it off
+#+BEGIN_SRC
+C-c C-c
+#+END_SRC
+  - [X] subtask
+  - [ ] subtask2
 
-alt-shift-enter to add new item
+-  to add new item
+#+BEGIN_SRC
+alt-shift-enter
+#+END_SRC
+
 ** WAIT set extra states and status change logging
 DEADLINE: <2020-06-19 Fr>
 #+SEQ_todo: TODO(t@/!) PROCESSING WAIT | DONE ABANDONED
-t- hotkey
-@- log timestamp + note when creating
-!- log timestamp when changing to different keyword
+- t- hotkey
+- @- log timestamp + note when creating
+- !- log timestamp when changing to different keyword
 ** TODO tags                                                          :chore:
+- add tags with
+#+BEGIN_SRC
 C-c C-q
+#+END_SRC
+- define tags at top of the file or under headlines
 #+TAGS: bug feature chore
-** agenda
-org-agenda-files are searched through when using org-agenda
-- C-c [ add a file to org-agenda-files
-- C-c ] remove file from org-agenda-files
 
+
+* agenda
+- all org-agenda-files are searched through when using org-agenda
+  - add a file to org-agenda-files
+    #+BEGIN_SRC
+    C-c [
+    #+END_SRC
+  - remove file from org-agenda-files
+    #+BEGIN_SRC
+    - C-c ]
+    #+END_SRC
+- open org-agend with
+#+BEGIN_SRC
 M-x org-agenda
-org-agenda-a move with b/f
-Shift-f is follow mode, so you see what task is behind every agenda point
+#+END_SRC
 
-M-x org-agenda C for setting up custom stuff
+- in org-agenda view,  move with b/f through the weeks
+- activate follow mode, so you see what task is behind every agenda point
+#+BEGIN_SRC
+Shift-f
+#+END_SRC
+
+- for setting up custom agenda options
+#+BEGIN_SRC
+M-x org-agenda C
+#+END_SRC
+
 
 
 * Time
 ** Timers
 *** Countdown
+#+BEGIN_SRC
 C-c C-x ;
+#+END_SRC
+
 *** relative timer
+#+BEGIN_SRC
 C-c C-x 0
+#+END_SRC
+
 *** Pausing and stopping
-C-c C-x , for pausing/resuming any timer
-C-u C-c C-x , for stopping/deleting timer
+- for pausing/resuming any timer
+#+BEGIN_SRC
+C-c C-x ,
+#+END_SRC
+- for stopping/deleting timer
+#+BEGIN_SRC
+C-u C-c C-x ,
+#+END_SRC
+
 *** timestamps
-C-c C-x . just timestamp
-C-c C-x - timestamp plus note
+- just timestamp
+#+BEGIN_SRC
+C-c C-x .
+#+END_SRC
+- timestamp plus note
+#+BEGIN_SRC
+C-c C-x -
+#+END_SRC
+
 ** Clocking/Time Tracking
 :PROPERTIES:
 :ORDERED:  t
@@ -219,74 +357,116 @@ CLOCK: [2020-06-21 So 23:46]--[2020-06-21 So 23:47] =>  0:01
 CLOCK: [2020-06-21 So 22:39]--[2020-06-21 So 23:46] =>  1:07
 :END:
 - to clock in
+#+BEGIN_SRC
   C-c C-x C-TAB
+#+END_SRC
+
 
 - to clock out
+#+BEGIN_SRC
   C-c C-x C-o
+#+END_SRC
+
 
 - jump to clocked task
-  C-c C-x C-j
+  #+BEGIN_SRC
+    C-c C-x C-j
+  #+END_SRC
 
 - cancel active clock
-  C-c C-x C-q
+  #+BEGIN_SRC
+    C-c C-x C-q
+  #+END_SRC
 
 - restart a clock
+#+BEGIN_SRC
   C-c C-x C-x
+#+END_SRC
+
 
 - to see all timers you could restart (good with jump to clocked tas)
-  C-u C-c C-x C-x
+  #+BEGIN_SRC
+    C-u C-c C-x C-x
+  #+END_SRC
 
 - display added up timers per task
-  C-c C-x C-d
+  #+BEGIN_SRC
+    C-c C-x C-d
+  #+END_SRC
 
-- clocktable
+- clocktable: good for exporting time
+#+BEGIN_SRC
   C-c C-x C-r
-  for exporting tim
+#+END_SRC
+
+
 
 
 * Captures
 - create template e.g. work.txt, details in the docs
-either set it up in:
+- either set it up in:
+#+BEGIN_SRC
 M-x org-capture C
-or define in setup.org (setup.el)
-u
-for nested structure eg. work: 1) invoices 2) tasks select multikey description
-then the keys have to be e.g work=w work:invoices=wi work:tasks=wt
+#+END_SRC
+- or define in setup.org (setup.el)
 
-- C-u 1 M-x org-capture   this prefix lets you set the date being inserted: good for planning a day in the future
+- for nested structure eg.
+  - work:
+    1) invoices
+    2) todos
+- select multikey description then the keys have to be e.g
+  + work=w
+  + work_invoices=wi work_tasks=wt
 
+- this prefix lets you set the date for the caputre: good for planning a day in the future
+#+BEGIN_SRC
+C-u 1 M-x org-capture
+#+END_SRC
 
 * Archiving
 - archive entry in place
+#+BEGIN_SRC
 C-c C-x a
+#+END_SRC
+
 - archive entry in archive at bottom of file
+#+BEGIN_SRC
 C-c C-x A
+#+END_SRC
 -archive subtree
+#+BEGIN_SRC
 C-c C-x S
+#+END_SRC
 
-- OR define global archive file at the top
+- OR define global archive file at the top (or header) and then archive to file
 #+ARCHIVE: filename::
-C-c C-x C-s archive to file
-
-you can also define a different archive for a subtree
-
+#+BEGIN_SRC
+C-c C-x C-s
+#+END_SRC
 
 * Column View
-put this at the top of the file:
+- put for example this at the top of the file:
+#+BEGIN_SRC
 #+COLUMNS: %7TODO(To Do) %40ITEM(Task) %TAGS(Tags) %6CLOCKSUM(Clock)
+#+END_SRC
 
-C-c C-x C-c start column view
-q to exist column view
+- start column view
+#+BEGIN_SRC
+C-c C-x C-c
+#+END_SRC
+- "q" to exist column view
 ** Advanced
-/!\ delete #+COLUMNS in the parent and restart file for this to work in the subtree
+- we can add extra properties which we want to have options we can select from also in column view
+#+BEGIN_SRC
 #+COLUMNS: %7TODO(To Do) %40ITEM(Task) %TAGS(Tags) %6CLOCKSUM(Clock) %8EFFORT(Effort){:} %8RATING(Rating)
+#+END_SRC
+- define those option either under the :PROPERTIES: drawer or at the top of the file, the _ALL suffix is needed to define the options
+#+BEGIN_SRC
+#+PROPERTY: Effort_ALL 0:05 0:10 0:15 0:30 1:00 2:00
+#+PROPERTY: Rating_ALL + ++ +++ ++++  +++++
+#+END_SRC
 
-
-Shift - right/left  to movie through the options
-:PROPERTIES:
-:END:
-*** TODO hey
-    :PROPERTIES:
-    :EFFORT:   0:10
-    :END:
-ökölsakd
+- in column view go into the column of one of these properties then you can change it's value
+#+BEGIN_SRC
+Shift - right/left
+#+END_SRC
